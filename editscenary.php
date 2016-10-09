@@ -11,12 +11,12 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-            $con=mysqli_connect("database-new.cs.tamu.edu","minjielu","199035Rr");
+            $con=mysqli_connect("db4free.net","minjielu","199035Rr");
             if(!$con)
             {
                 echo "<br/>Database connection issue!";
             }
-            mysqli_select_db($con,"project1");
+            mysqli_select_db($con,"minjieluproject1");
             $qry='SELECT * FROM Scenary WHERE location=\''.$_GET['loca'].'\'';
             $result=mysqli_query($con, $qry);
             if(!$result)

@@ -8,12 +8,12 @@
         <?php
         if(isset($_POST['sumit3']))
         {
-            $con=mysqli_connect("database-new.cs.tamu.edu","minjielu","199035Rr");
+            $con=mysqli_connect("db4free.net","minjielu","199035Rr");
             if(!$con)
             {
                 echo "<br/>Database connection issue!";
             }
-            mysqli_select_db($con,"project1");
+            mysqli_select_db($con,"minjieluproject1");
             $qry='DELETE FROM Scenary WHERE location=\''.$_POST['oldloca'].'\'';
             $result=mysqli_query($con, $qry);
             if(!$result)
@@ -27,12 +27,12 @@
         }
         if(isset($_POST['sumit2']))
         {
-            $con=mysqli_connect("database-new.cs.tamu.edu","minjelu","199035Rr");
+            $con=mysqli_connect("db4free.net","minjelu","199035Rr");
             if(!$con)
             {
                 echo "<br/>Database connection issue!";
             }
-            mysqli_select_db($con,"project1");
+            mysqli_select_db($con,"minjieluproject1");
             $qry='UPDATE Scenary SET location=\''.$_POST['location2'].'\',description="'.$_POST['description1'].'" WHERE location=\''.$_POST['oldloca'].'\'';
             $result=mysqli_query($con, $qry);
             if(!$result)
@@ -46,12 +46,12 @@
         }
         if(isset($_POST['sumit1']))
         {
-            $con=mysqli_connect("database-new.cs.tamu.edu","minjielu","199035Rr");
+            $con=mysqli_connect("db4free.net","minjielu","199035Rr");
             if(!$con)
             {
                 echo "<br/>Database connection issue!";
             }
-            mysqli_select_db($con,"project1");
+            mysqli_select_db($con,"minjieluproject1");
             $qry='INSERT INTO Scenary VALUES (\''.$_POST['location1'].'\',"'.$_POST['description'].'")';
             $result=mysqli_query($con, $qry);
             if(!$result)
@@ -59,12 +59,12 @@
                 echo '<font color="red">Can\'t write into scenary! Probably because the location already exists.</font>';
             }
         }
-        $con=mysqli_connect("database-new.cs.tamu.edu","minjielu","199035Rr");
+        $con=mysqli_connect("db4free.net","minjielu","199035Rr");
             if(!$con)
             {
                 echo "<br/>Database connection issue!";
             }
-            mysqli_select_db($con,"project1");
+            mysqli_select_db($con,"minjieluproject1");
             $qry='SELECT location FROM Scenary ORDER BY location';
             $result=mysqli_query($con, $qry);
             if(!$result)

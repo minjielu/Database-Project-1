@@ -4,12 +4,12 @@
         <?php
         if(isset($_POST['update']))
         {
-            $con=mysqli_connect("127.0.0.1","root","199035Rr");
+            $con=mysqli_connect("db4free.net","minjielu","199035Rr");
             if(!$con)
             {
                 echo "<br/>Database connection issue!";
             }
-            mysqli_select_db($con,"project1");
+            mysqli_select_db($con,"minjieluproject1");
             $qry='UPDATE Images SET name=\''.$_POST['name'].'\',class=\''.$_POST['class'].'\',date=\''.$_POST['date'].'\',location=\''.$_POST['location'].'\' WHERE id='.$_GET['picid'];
             $result=  mysqli_query($con, $qry);
             if(!$result)
@@ -19,12 +19,12 @@
         }
         if(!isset($_POST['edit']))
         {
-            $con=mysqli_connect("127.0.0.1","root","199035Rr");
+            $con=mysqli_connect("db4free.net","minjielu","199035Rr");
             if(!$con)
             {
                 echo "<br/>Database connection issue!";
             }
-            mysqli_select_db($con,"project1");
+            mysqli_select_db($con,"minjieluproject1");
             $qry='SELECT * FROM Images WHERE id='.$_GET['picid'];
             $result1=  mysqli_query($con, $qry);
             $result=  mysqli_fetch_array($result1);
@@ -62,12 +62,12 @@
         }
         else
         {
-            $con=mysqli_connect("127.0.0.1","root","199035Rr");
+            $con=mysqli_connect("db4free.net","minjielu","199035Rr");
             if(!$con)
             {
                 echo "<br/>Database connection issue!";
             }
-            mysqli_select_db($con,"project1");
+            mysqli_select_db($con,"minjieluproject1");
             $qry='SELECT * FROM Images WHERE id='.$_GET['picid'];
             $result1=  mysqli_query($con, $qry);
             $result=  mysqli_fetch_array($result1);

@@ -1,6 +1,6 @@
 <?php
-    ini_set('mysql.connect_timeout',300);
-    ini_set('default_socket_timeout',300);
+    ini_set('mysql.connect_timeout',3000);
+    ini_set('default_socket_timeout',3000);
 ?>
 <html>
     <head>
@@ -33,12 +33,12 @@
                 <select name="location">
                     <option>---choose location---</option>
                     <?php
-                    $con=mysqli_connect("database-new.cs.tamu.edu","minjielu","199035Rr");
+                    $con=mysqli_connect("db4free.net","minjielu","199035Rr");
                     if(!$con)
                     {
                         echo "<br/>Database connection issue!";
                     }
-                    mysqli_select_db($con,"project1");
+                    mysqli_select_db($con,"minjieluproject1");
                     $qry="SELECT location FROM Scenary ORDER BY location";
                     $result=  mysqli_query($con, $qry);
                     if(!$result)
@@ -98,12 +98,12 @@
             }
             function saveimage($name,$class,$sizex,$sizey,$date,$location,$image)
             {
-                $con=mysqli_connect("database-new.cs.tamu.edu","minjielu","199035Rr");
+                $con=mysqli_connect("db4free.net","minjielu","199035Rr");
                 if(!$con)
                 {
                     echo "<br/>Database connection issue.";
                 }
-                mysqli_select_db($con,"project1");
+                mysqli_select_db($con,"minjieluproject1");
                 $qry="INSERT INTO Images(name,class,sizex,sizey,date,location,image) VALUES ('$name','$class','$sizex','$sizey','$date','$location','$image')";
                 $result=mysqli_query($con,$qry);
                 if($result)
@@ -139,12 +139,12 @@
                 <select name="location1">
                     <option>---choose location---</option>
                     <?php
-                    $con=mysqli_connect("database-new.cs.tamu.edu","minjielu","199035Rr");
+                    $con=mysqli_connect("db4free.net","minjielu","199035Rr");
                     if(!$con)
                     {
                         echo "<br/>Database connection issue!";
                     }
-                    mysqli_select_db($con,"project1");
+                    mysqli_select_db($con,"minjieluproject1");
                     $qry="SELECT location FROM Scenary ORDER BY location";
                     $result=  mysqli_query($con, $qry);
                     if(!$result)
@@ -166,12 +166,12 @@
             echo '<hr>';
             if(isset($_POST['delete']))
             {
-                $con=mysqli_connect("database-new.cs.tamu.edu","minjielu","199035Rr");
+                $con=mysqli_connect("db4free.net","minjielu","199035Rr");
                 if(!$con)
                 {
                     echo "<br/>Database connection issue!";
                 }
-                mysqli_select_db($con,"project1");
+                mysqli_select_db($con,"minjieluproject1");
                 $iter=count($_POST['check']);
                 $numdelfail=0;
                 for($i=0;$i<$iter;$i++)
@@ -199,8 +199,8 @@
             displayimage();
             function displayimage()
             {
-                $con=mysqli_connect("database-new.cs.tamu.edu","minjielu","199035Rr");
-                mysqli_select_db($con, "Project1");
+                $con=mysqli_connect("db4free.net","minjielu","199035Rr");
+                mysqli_select_db($con, "minjieluproject1");
                 $qry="SELECT * FROM Images";
                 if(isset($_POST['sumit2']))
                 {
