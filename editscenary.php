@@ -43,6 +43,7 @@ and open the template in the editor.
                         </form>
                     </div>';
             }
+            mysqli_close($con);
         ?>
     </body>
 </html>

@@ -27,7 +27,7 @@
         }
         if(isset($_POST['sumit2']))
         {
-            $con=mysqli_connect("db4free.net","minjelu","199035Rr");
+            $con=mysqli_connect("db4free.net","minjielu","199035Rr");
             if(!$con)
             {
                 echo "<br/>Database connection issue!";
@@ -37,7 +37,7 @@
             $result=mysqli_query($con, $qry);
             if(!$result)
             {
-                echo '<font color="red">Can\'t write into scenary! Probably because the new location name already exists.</font>';
+                echo '<font color="red">Can\'t update location information</font>';
             }
             else
             {
