@@ -189,6 +189,10 @@
                 {
                     echo '<font size="3">1 image is deleted.</font><br/>';
                 }
+                elseif($iter==$numdelfail)
+                {
+                    echo '<font size="3">No image is deleted.</font><br/>';
+                }
                 else
                 {
                     echo '<font size="3">'.($iter-$numdelfail).' images are deleted.</font><br/>';
@@ -239,6 +243,8 @@
                 }
                 echo '<form method="POST" enctype="multipart/form-data">';
                 echo '<input type="submit" name="delete" value="Delete checked images" /><br/>';
+                $numofpic=mysqli_num_rows($result);
+                echo $numofpic.' pictures found.';
                 while(($row=mysqli_fetch_array($result)) && $rown<$numrow)
                 {
                     $rown++;
@@ -246,7 +252,7 @@
                               <input type="checkbox" name="check[]" value="'.$row[0].'" />
                               <br/>
                               <img height="'.($row[3]/4).'" width="'.($row[4]/4).'" src="data:image;base64,'.$row[7].'">   
-                              <br/><a href="detail.php?picid='.$row[0].'"><button type="button">Detail for '.$row[1].'</button></a>
+                              <br/><a href="detail.php?picid='.$row[0].'"><button type="button"><font size="1">Detail for '.$row[1].'</font></button></a>
                           </div>';
                     if($rown%12==0) {
                         echo "<br/>";
