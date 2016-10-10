@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+This web page retrieves information for a location and allows user to modify it.
 -->
 <html>
     <head>
@@ -11,7 +9,7 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-            $con=mysqli_connect("db4free.net","minjielu","199035Rr");
+            $con=mysqli_connect("db4free.net","minjielu","199035Rr");    //Code from here retrieves information about a location and creates a form containing previous information.
             if(!$con)
             {
                 echo "<br/>Database connection issue!";

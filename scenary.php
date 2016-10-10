@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<!--
+This web page displays item in the Scenary database.
+It handles creating, updating, and deleting location items.
+-->
 <html>
     <head>
         <meta charset="UTF-8">
@@ -6,7 +11,7 @@
     <body>
         <a href="index.php"><button type="button">Return to main page</button></a><br/>
         <?php
-        if(isset($_POST['sumit3']))
+        if(isset($_POST['sumit3']))           //Code from here handls deleting a location.
         {
             $con=mysqli_connect("db4free.net","minjielu","199035Rr");
             if(!$con)
@@ -25,7 +30,7 @@
                 echo '<font color="red">location '.$_POST['oldloca'].' is deleted.</font>';
             }
         }
-        if(isset($_POST['sumit2']))
+        if(isset($_POST['sumit2'])) //Code from here updates existing location.
         {
             $con=mysqli_connect("db4free.net","minjielu","199035Rr");
             if(!$con)
@@ -44,7 +49,7 @@
                 echo '<font color="red">location '.$_POST['oldloca'].' is updated.</font>';
             }
         }
-        if(isset($_POST['sumit1']))
+        if(isset($_POST['sumit1']))                 //Code from here creates new location.
         {
             $con=mysqli_connect("db4free.net","minjielu","199035Rr");
             if(!$con)
@@ -59,7 +64,7 @@
                 echo '<font color="red">Can\'t write into scenary! Probably because the location already exists.</font>';
             }
         }
-        $con=mysqli_connect("db4free.net","minjielu","199035Rr");
+        $con=mysqli_connect("db4free.net","minjielu","199035Rr");   //Code from here displays all the locations.
             if(!$con)
             {
                 echo "<br/>Database connection issue!";
@@ -79,7 +84,9 @@
                     echo '<a href="editscenary.php?loca='.$row[0].'">'.$row[0].'</a><br/>';
                 }
             }
+            mysqli_close($con);
         ?>
+        <!-- You can create new location here -->
         <br/>
         <div>
             <b><font size="3">Create new location</font></b>

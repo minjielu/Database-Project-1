@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<!--
+This is the index page of the web site.
+It has three parts: upload new image, filter result and image display.
+-->
 <?php
     ini_set('mysql.connect_timeout',3000);
     ini_set('default_socket_timeout',3000);
@@ -30,10 +35,10 @@
                 <b>Date has to be later than 1980-01-01 and earlier than 2017-12-31. Default date is the current date.</b>
                 <br/><br/>
                 <b>Choose from existing location:</b>
-                <select name="location">
+                <select name="location">                           
                     <option>---choose location---</option>
                     <?php
-                    $con=mysqli_connect("db4free.net","minjielu","199035Rr");
+                    $con=mysqli_connect("db4free.net","minjielu","199035Rr");        //Choices of locations are retrieved from the Scenary database.
                     if(!$con)
                     {
                         echo "<br/>Database connection issue!";
@@ -60,7 +65,7 @@
         </form>
         </div>
         <?php
-            if(isset($_POST['sumit']))
+            if(isset($_POST['sumit']))                             //Code from here will handle saving new image.
             {
                 if(getimagesize($_FILES['image']['tmp_name'])==FALSE)
                 {
@@ -80,7 +85,7 @@
                     }
                     if($_POST['date']=='YYYY-MM-DD')
                     {
-                        date_default_timezone_set('UTC');
+                        date_default_timezone_set('UTC');                     //Date is set according to UTC and in the form of "YYYY-MM-DD".
                         $datearray= getdate();
                         $date=$datearray['year'].'-'.$datearray['mon'].'-'.$datearray['mday'];
                     }
@@ -104,7 +109,7 @@
                     echo "<br/>Database connection issue.";
                 }
                 mysqli_select_db($con,"minjieluproject1");
-                $qry='SELECT id FROM Images WHERE name=\''.$name.'\' and class=\''.$class.'\' and date=\''.$date.'\' and image=\''.$image.'\'';
+                $qry='SELECT id FROM Images WHERE name=\''.$name.'\' and class=\''.$class.'\' and date=\''.$date.'\' and image=\''.$image.'\'';    //This query is used to avoid the image waiting for uploading is a copy of another image which already exists.
                 $result=  mysqli_query($con, $qry);
                 if(mysqli_num_rows($result)<1)
                 {
@@ -172,7 +177,7 @@
         </form>
         </div>
         <?php
-            echo '<hr>';
+            echo '<hr>';                            //Code from here handles deleting images.
             if(isset($_POST['delete']))
             {
                 $con=mysqli_connect("db4free.net","minjielu","199035Rr");
@@ -210,12 +215,12 @@
             }
             echo "Images<br/><br/>";
             displayimage();
-            function displayimage()
+            function displayimage()  //Code from here handles filtering images according to given conditions.
             {
                 $con=mysqli_connect("db4free.net","minjielu","199035Rr");
                 mysqli_select_db($con, "minjieluproject1");
                 $qry="SELECT * FROM Images";
-                if(isset($_POST['sumit2']))
+                if(isset($_POST['sumit2']))            //Filter is implemented by constructing a string behind the WHERE key word in MySQL SELECT query.
                 {
                    $condition='';
                    if($_POST['class1']!="---choose type---")
@@ -245,7 +250,7 @@
                 }
                 $result=mysqli_query($con,$qry);
                 $rown=0;
-                $numrow=100;
+                $numrow=100;                            //Initially only 100 pictures are displayed for a clean display window. But user can press show all pictures to display all the images.
                 if(isset($_POST['morepic']))
                 {
                     $numrow=  mysqli_num_rows($result);
@@ -263,14 +268,14 @@
                               <img height="'.($row[3]/4).'" width="'.($row[4]/4).'" src="data:image;base64,'.$row[7].'">   
                               <br/><a href="detail.php?picid='.$row[0].'"><button type="button"><font size="1">Detail for '.$row[1].'</font></button></a>
                           </div>';
-                    if($rown%12==0) {
+                    if($rown%12==0) {              //12 pictures per row.
                         echo "<br/>";
                     }
                 }
                 echo '</form>';
                 if(!isset($_POST['morepic']))
                 {
-                    echo '<br/><form method="POST"><input name="morepic" value="Show all pictures" type="submit"/></form>';
+                    echo '<br/><form method="POST"><input name="morepic" value="Show all pictures" type="submit"/></form>';    //This is a link to the detail of an image. The image id is passed to the next page for the database to search for the image.
                 }
                 mysqli_close($con);
             }
