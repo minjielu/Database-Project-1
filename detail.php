@@ -93,12 +93,12 @@
                       <br/><br/>
                       <b>Location of the picture:</b>
                       <select name="location">';
-                        $con=mysqli_connect("127.0.0.1","root","199035Rr");
+                        $con=mysqli_connect("db4free.net","minjielu","199035Rr");
                         if(!$con)
                         {
                             echo "<br/>Database connection issue!";
                         }
-                        mysqli_select_db($con,"project1");
+                        mysqli_select_db($con,"minjieluproject1");
                         $qry="SELECT location FROM Scenary ORDER BY location";
                         $result3=  mysqli_query($con, $qry);
                         if(!$result)
