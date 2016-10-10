@@ -104,15 +104,24 @@
                     echo "<br/>Database connection issue.";
                 }
                 mysqli_select_db($con,"minjieluproject1");
-                $qry="INSERT INTO Images(name,class,sizex,sizey,date,location,image) VALUES ('$name','$class','$sizex','$sizey','$date','$location','$image')";
-                $result=mysqli_query($con,$qry);
-                if($result)
+                $qry='SELECT id FROM Images WHERE name=\''.$name.'\' and class=\''.$class.'\' and date=\''.$date.'\' and image=\''.$image.'\'';
+                $result=  mysqli_query($con, $qry);
+                if(mysqli_num_rows($result)<1)
                 {
-                    echo "<br/>Image uploaded.";
+                    $qry="INSERT INTO Images(name,class,sizex,sizey,date,location,image) VALUES ('$name','$class','$sizex','$sizey','$date','$location','$image')";
+                    $result=mysqli_query($con,$qry);
+                    if($result)
+                    {
+                        echo "<br/>Image uploaded.";
+                    }
+                    else
+                    {
+                        echo '<br/><font color="red">Image not uploaded! Please check that you have filled in all the necessary blanks.</font>';
+                    }
                 }
                 else
                 {
-                    echo '<br/><font color="red">Image not uploaded! Please check that you have filled in all the necessary blanks.</font>';
+                    echo '<br/><font color="red">Can\'t upload image because it already exists.</font>';
                 }
                 mysqli_close($con);
             }
