@@ -253,6 +253,7 @@ It has three parts: upload new image, filter result and image display.
                 $numrow=100;                            //Initially only 100 pictures are displayed for a clean display window. But user can press show all pictures to display all the images.
                 if(isset($_POST['morepic']))
                 {
+                    $result= mysqli_query($con,$_POST['oldcon']);
                     $numrow=  mysqli_num_rows($result);
                 }
                 echo '<form method="POST" enctype="multipart/form-data">';
@@ -275,8 +276,8 @@ It has three parts: upload new image, filter result and image display.
                 echo '</form>';
                 if(!isset($_POST['morepic']))
                 {
-                    echo '<br/><form method="POST"><input name="morepic" value="Show all pictures" type="submit"/></form>';    //This is a link to the detail of an image. The image id is passed to the next page for the database to search for the image.
-                }
+                    echo '<br/><form method="POST"><input name="morepic" value="Show all pictures" type="submit"/><input type="hidden" name="oldcon" value="'.$qry.'"></form>';    //This is a link to the detail of an image. The image id is passed to the next page for the database to search for the image.
+                }                                                  //A hidden input is added. In this way, if show all pictures is pressed after a filter operation, all the pictures according to the filter will be shown.
                 mysqli_close($con);
             }
         ?>
