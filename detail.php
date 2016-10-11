@@ -25,7 +25,7 @@ This page also handles updating of an image detail.
         }
         if(!isset($_POST['edit']))    //Code from here displays detail of an image. When the edit image button is pressed, it displays a form which allows users to change details. 
         {
-            $con=mysqli_connect("db4free.net","minjielu","datebase1");
+            $con=mysqli_connect("db4free.net","minjielu","database1");
             if(!$con)
             {
                 echo "<br/>Database connection issue!";

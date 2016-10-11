@@ -9,7 +9,7 @@ This web page retrieves information for a location and allows user to modify it.
     </head>
     <body>
         <?php
-            $con=mysqli_connect("db4free.net","minjielu","199035Rr");    //Code from here retrieves information about a location and creates a form containing previous information.
+            $con=mysqli_connect("db4free.net","minjielu","database1");    //Code from here retrieves information about a location and creates a form containing previous information.
             if(!$con)
             {
                 echo "<br/>Database connection issue!";

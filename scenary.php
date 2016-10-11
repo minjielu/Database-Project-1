@@ -64,7 +64,7 @@ It handles creating, updating, and deleting location items.
                 echo '<font color="red">Can\'t write into scenary! Probably because the location already exists.</font>';
             }
         }
-        $con=mysqli_connect("db4free.net","minjielu","199035Rr");   //Code from here displays all the locations.
+        $con=mysqli_connect("db4free.net","minjielu","database1");   //Code from here displays all the locations.
             if(!$con)
             {
                 echo "<br/>Database connection issue!";

@@ -172,6 +172,17 @@ It has three parts: upload new image, filter result and image display.
                     ?>
                 </select>
                 <br/><br/>
+                <b><font size="3">And sort by</font></b>
+                <br/><br/>
+                <select name="orderway">
+                    <option>name:a(A)-z(Z)</option>
+                    <option>name:z(Z)-a(A)</option>
+                    <option>date:most recent first</option>
+                    <option>date:oldest first</option>
+                    <option>location:a(A)-z(Z)</option>
+                    <option>location:z(Z)-a(A)</option>
+                </select>
+                <br/><br/>
                 <input type="submit" name="sumit2" value="Filter" />
                 </font>
         </form>
@@ -222,31 +233,57 @@ It has three parts: upload new image, filter result and image display.
                 $qry="SELECT * FROM Images";
                 if(isset($_POST['sumit2']))            //Filter is implemented by constructing a string behind the WHERE key word in MySQL SELECT query.
                 {
-                   $condition='';
-                   if($_POST['class1']!="---choose type---")
-                   {
-                       $condition='class=\''.$_POST['class1'].'\'';
-                   }
-                   if($_POST['idate']!="YYYY-MM-DD")
-                   {
-                       $condition=$condition.' and Date(date)>=Date(\''.$_POST['idate'].'\')';
-                   }
-                   if($_POST['edate']!="YYYY-MM-DD")
-                   {
-                       $condition=$condition.' and Date(date)<=Date(\''.$_POST['edate'].'\')';
-                   }
-                   if($_POST['location1']!="---choose location---")
-                   {
-                       $condition=$condition.' and location=\''.$_POST['location1'].'\'';
-                   }
-                   if($condition[0]==' ')
-                   {
-                       $condition=  substr($condition, 4);
-                   }
-                   if($condition!='')
-                   {
-                       $qry=$qry.' WHERE '.$condition;
-                   }
+                    $condition='';
+                    if($_POST['class1']!="---choose type---")
+                    {
+                        $condition='class=\''.$_POST['class1'].'\'';
+                    }
+                    if($_POST['idate']!="YYYY-MM-DD")
+                    {
+                        $condition=$condition.' and Date(date)>=Date(\''.$_POST['idate'].'\')';
+                    }
+                    if($_POST['edate']!="YYYY-MM-DD")
+                    {
+                        $condition=$condition.' and Date(date)<=Date(\''.$_POST['edate'].'\')';
+                    }
+                    if($_POST['location1']!="---choose location---")
+                    {
+                        $condition=$condition.' and location=\''.$_POST['location1'].'\'';
+                    }
+                    if($condition[0]==' ')
+                    {
+                        $condition=  substr($condition, 4);
+                    }
+                    if($condition!='')
+                    {
+                        $qry=$qry.' WHERE '.$condition;
+                    }
+                    $orderway='';
+                    switch($_POST['orderway'])
+                    {
+                        case 'name:a(A)-z(Z)':
+                            $orderway='name';
+                            break;
+                        case 'name:z(Z)-a(A)':
+                            $orderway='name DESC';
+                            break;
+                        case 'date:most recent first':
+                            $orderway='date DESC';
+                            break;
+                        case 'date:oldest first':
+                            $orderway='date';
+                            break;
+                        case 'location:a(A)-z(Z)':
+                            $orderway='location';
+                            break;
+                        case 'location:z(Z)-a(A)':
+                            $orderway='location DESC';
+                            break;
+                    }
+                    if($orderway!='')
+                    {
+                        $qry=$qry.' ORDER BY '.$orderway;
+                    }
                 }
                 $result=mysqli_query($con,$qry);
                 $rown=0;
