@@ -13,7 +13,7 @@ It handles creating, updating, and deleting location items.
         <?php
         if(isset($_POST['sumit3']))           //Code from here handls deleting a location.
         {
-            $con=mysqli_connect("db4free.net","minjielu","199035Rr");
+            $con=mysqli_connect("db4free.net","minjielu","database1");
             if(!$con)
             {
                 echo "<br/>Database connection issue!";
@@ -32,7 +32,7 @@ It handles creating, updating, and deleting location items.
         }
         if(isset($_POST['sumit2'])) //Code from here updates existing location.
         {
-            $con=mysqli_connect("db4free.net","minjielu","199035Rr");
+            $con=mysqli_connect("db4free.net","minjielu","database1");
             if(!$con)
             {
                 echo "<br/>Database connection issue!";
@@ -51,7 +51,7 @@ It handles creating, updating, and deleting location items.
         }
         if(isset($_POST['sumit1']))                 //Code from here creates new location.
         {
-            $con=mysqli_connect("db4free.net","minjielu","199035Rr");
+            $con=mysqli_connect("db4free.net","minjielu","database1");
             if(!$con)
             {
                 echo "<br/>Database connection issue!";

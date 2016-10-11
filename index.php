@@ -38,7 +38,7 @@ It has three parts: upload new image, filter result and image display.
                 <select name="location">                           
                     <option>---choose location---</option>
                     <?php
-                    $con=mysqli_connect("db4free.net","minjielu","199035Rr");        //Choices of locations are retrieved from the Scenary database.
+                    $con=mysqli_connect("db4free.net","minjielu","database1");        //Choices of locations are retrieved from the Scenary database.
                     if(!$con)
                     {
                         echo "<br/>Database connection issue!";
@@ -103,7 +103,7 @@ It has three parts: upload new image, filter result and image display.
             }
             function saveimage($name,$class,$sizex,$sizey,$date,$location,$image)
             {
-                $con=mysqli_connect("db4free.net","minjielu","199035Rr");
+                $con=mysqli_connect("db4free.net","minjielu","database1");
                 if(!$con)
                 {
                     echo "<br/>Database connection issue.";
@@ -153,7 +153,7 @@ It has three parts: upload new image, filter result and image display.
                 <select name="location1">
                     <option>---choose location---</option>
                     <?php
-                    $con=mysqli_connect("db4free.net","minjielu","199035Rr");
+                    $con=mysqli_connect("db4free.net","minjielu","database1");
                     if(!$con)
                     {
                         echo "<br/>Database connection issue!";
@@ -180,7 +180,7 @@ It has three parts: upload new image, filter result and image display.
             echo '<hr>';                            //Code from here handles deleting images.
             if(isset($_POST['delete']))
             {
-                $con=mysqli_connect("db4free.net","minjielu","199035Rr");
+                $con=mysqli_connect("db4free.net","minjielu","database1");
                 if(!$con)
                 {
                     echo "<br/>Database connection issue!";
@@ -217,7 +217,7 @@ It has three parts: upload new image, filter result and image display.
             displayimage();
             function displayimage()  //Code from here handles filtering images according to given conditions.
             {
-                $con=mysqli_connect("db4free.net","minjielu","199035Rr");
+                $con=mysqli_connect("db4free.net","minjielu","database1");
                 mysqli_select_db($con, "minjieluproject1");
                 $qry="SELECT * FROM Images";
                 if(isset($_POST['sumit2']))            //Filter is implemented by constructing a string behind the WHERE key word in MySQL SELECT query.

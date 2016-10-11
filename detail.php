@@ -10,7 +10,7 @@ This page also handles updating of an image detail.
         <?php
         if(isset($_POST['update']))              //Code from here updates an image detail to the database according to the input.
         {
-            $con=mysqli_connect("db4free.net","minjielu","199035Rr");
+            $con=mysqli_connect("db4free.net","minjielu","database1");
             if(!$con)
             {
                 echo "<br/>Database connection issue!";
@@ -25,7 +25,7 @@ This page also handles updating of an image detail.
         }
         if(!isset($_POST['edit']))    //Code from here displays detail of an image. When the edit image button is pressed, it displays a form which allows users to change details. 
         {
-            $con=mysqli_connect("db4free.net","minjielu","199035Rr");
+            $con=mysqli_connect("db4free.net","minjielu","datebase1");
             if(!$con)
             {
                 echo "<br/>Database connection issue!";
@@ -68,7 +68,7 @@ This page also handles updating of an image detail.
         }
         else
         {
-            $con=mysqli_connect("db4free.net","minjielu","199035Rr");
+            $con=mysqli_connect("db4free.net","minjielu","database1");
             if(!$con)
             {
                 echo "<br/>Database connection issue!";
