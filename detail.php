@@ -99,7 +99,7 @@ This page also handles updating of an image detail.
                       <br/><br/>
                       <b>Location of the picture:</b>
                       <select name="location">';
-                        $con=mysqli_connect("db4free.net","minjielu","199035Rr");
+                        $con=mysqli_connect("db4free.net","minjielu","database1");
                         if(!$con)
                         {
                             echo "<br/>Database connection issue!";
