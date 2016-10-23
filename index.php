@@ -4,8 +4,8 @@ This is the index page of the web site.
 It has three parts: upload new image, filter result and image display.
 -->
 <?php
-    ini_set('mysql.connect_timeout',3000);
-    ini_set('default_socket_timeout',3000);
+    ini_set('mysql.connect_timeout',6000);
+    ini_set('default_socket_timeout',6000);
 ?>
 <html>
     <head>
